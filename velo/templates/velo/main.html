@@ -31,8 +31,8 @@
                     <a href="{%url 'articles'%}" class="nav-item">Статьи</a>
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
                     <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
-                    <a href="/" class="nav-item">Навигатор</a>
-                    <a href="/" class="nav-item">Кабинет</a>                
+                    <a href="{%url 'navigator'%}"  class="nav-item">Навигатор</a>
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>                
                 </div>
                 <div class="account flex-between">
                     <p class="account-title">Иван Иванов</p> 
@@ -48,35 +48,17 @@
             <p>Вы можете с легкостью определиться с маршрутом на свое 
                 усмотрение и отправиться <br> в незабываемое приключение по культурным местам нашего города.</p>
         </div>
-        <div class="flex-between routes">
+         <div class="flex-between routes">
+            {% for velomarsh in marhs.all %}
             <div class="route">
-                <img class="route-img" src="{% static "images/sword.svg"%}"  />
+                <img class="route-img"  src="{{ velomarsh.marsh_image.url }}"  />
                 <div class="flex-between">
-                    <p class="route-title">Военный</p>
+                    <p class="route-title">{{ velomarsh.marsh_text }}</p>
                     <i class="arrow-right"></i>
                 </div>
             </div>
-            <div class="route">
-                <img class="route-img" src="{% static "images/historic.svg"%}"  />
-                <div class="flex-between">
-                    <p class="route-title">Исторический</p>
-                    <i class="arrow-right"></i>
-                </div>
-            </div>
-            <div class="route">
-                <img class="route-img" src="{% static "images/cultures.svg"%}"  />
-                <div class="flex-between">
-                    <p class="route-title">Ремесленический</p>
-                    <i class="arrow-right"></i>
-                </div>
-            </div>
-            <div class="route">
-                <img class="route-img" src="{% static "images/basketball.svg"%}"  />
-                <div class="flex-between">
-                    <p class="route-title">Спортивный</p>
-                    <i class="arrow-right"></i>
-                </div>
-            </div>
+
+            {% endfor %}
         </div>
         <button class="main-button big-button button">Создать новый маршрут</button>
     </div> 
@@ -129,12 +111,12 @@
                 <div class="mail">example@gmail.com</div>
             </div>
             <div class="footer-nav">
-                <a href="#" class="footer-nav-item">Маршруты</a>
-                <a href="#" class="footer-nav-item">Статьи</a>
-                <a href="#" class="footer-nav-item">О нас</a>
-                <a href="#" class="footer-nav-item">Объекты</a>
-                <a href="#" class="footer-nav-item">Навигатор</a>
-                <a href="#" class="footer-nav-item">Кабинет</a>
+                <a href="/" class="footer-nav-item">Маршруты</a>
+                <a href="{%url 'articles'%}" class="footer-nav-item">Статьи</a>
+                <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
+                <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
+                <a href="{%url 'navigator'%}" class="footer-nav-item">Навигатор</a>
+                <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
             </div>
             <div class="footer-text">
                 Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 
