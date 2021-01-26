@@ -31,8 +31,8 @@
                     <a href="{%url 'articles'%}" class="nav-item">Статьи</a>
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
                     <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
-                    <a href="/" class="nav-item">Навигатор</a>
-                    <a href="/" class="nav-item">Кабинет</a>
+                    <a href="{%url 'navigator'%}" class="nav-item">Навигатор</a>
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
                 </div>
                 <div class="account flex-between">
                     <p class="account-title">Иван Иванов</p> 
@@ -128,12 +128,12 @@
                 <div class="mail">example@gmail.com</div>
             </div>
             <div class="footer-nav">
-                <a href="#" class="footer-nav-item">Маршруты</a>
-                <a href="#" class="footer-nav-item">Статьи</a>
-                <a href="#" class="footer-nav-item">О нас</a>
-                <a href="#" class="footer-nav-item">Объекты</a>
-                <a href="#" class="footer-nav-item">Навигатор</a>
-                <a href="#" class="footer-nav-item">Кабинет</a>
+                <a href="/" class="footer-nav-item">Маршруты</a>
+                <a href="{%url 'articles'%}" class="footer-nav-item">Статьи</a>
+                <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
+                <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
+                <a href="{%url 'navigator'%}"  class="footer-nav-item">Навигатор</a>
+                <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
             </div>
             <div class="footer-text">
                 Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 

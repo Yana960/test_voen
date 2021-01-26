@@ -22,5 +22,7 @@ urlpatterns = [
     path('', velo.views.showmain, name='showmain'),
     path('articles/', velo.views.articles, name='articles'),
     path('/about', velo.views.about, name='about'),
-    path('/objects', velo.views.objects, name='objects'),
+    path('/objects', velo.views.navigator, name='objects'),
+    path('/navigator', velo.views.objects, name='navigator'),
+    path('/saved', velo.views.saved, name='saved'),
 ]

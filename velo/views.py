@@ -12,3 +12,9 @@ def about(request):
 
 def objects(request):
 	return render(request, 'velo/objects.html')
+
+def navigator(request):
+	return render(request, 'velo/navigator.html')
+
+def saved(request):
+	return render(request, 'velo/saved.html')
