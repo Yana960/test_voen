@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" >
+</head>
+<body>
+    <button id="signup-button">Регистрация</button>
+    <div class="overflow" id="signup-modal">
+    <div class="modal bg-white">
+        <div class="close"></div>
+        <h2 class="text-center">Регистрация</h2>
+
+        <div class="login-form-item">
+            <div class="label bold">Имя и Фамилия</div>
+            <input class="login-form-input input" type="text" 
+            placeholder="Иван Иванов">
+       </div>
+
+       <div class="login-form-item">
+            <div class="label bold">Телефон</div>
+            <input class="login-form-input input" type="text" 
+            placeholder="+375 29 123 98 98">
+        </div>
+
+       <div class="login-form-item">
+            <div class="label bold">Email</div>
+            <input class="login-form-input input" type="text" 
+            placeholder="example@gmail.com">
+       </div>
+       
+       <div class="login-form-item">  
+            <div class="label bold">Пароль</div>
+            <input class="login-form-input input" type="text" 
+            placeholder="Введите пароль">
+        </div>
+        <button class="main-button big-button button questions-form-button width100">Зарегистрироваться</button>
+        <div class="login-form-bottom text-center">
+            <p class="login-form-bottom-text">
+                У меня уже есть аккаунт!
+                <a href="#" class="signup-link">Войти</a>
+            </p>
+        </div>
+    </div> 
+    </div>    
+    <script src="./modal-signup.js"></script>                        
+</body>
+</html>
