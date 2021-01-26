@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static "css/style.css"%}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="top-header flex-between">
+                <a href="/" class="logo flex-between">
+                    <div>
+                        <p class="logo-top">Быхов</p>
+                        <p class="logo-bottom">Велосипедный</p>
+                    </div>
+                    <img src="{% static "images/logo.svg"%}" class="logo-img" />
+                </a>
+                <div class="partners">
+                    <img src="{% static "images/es.png"%}"  />
+                    <img src="{% static "images/rb.png"%}"  />
+                    <img src="{% static "images/undp.png"%}"  />
+                </div>
+            </div>
+            <div class="flex-between">
+                <div class="nav">
+                    <a href="/" class="nav-item active">Маршруты</a>
+                    <a href="{%url 'articles'%}" class="nav-item">Статьи</a>
+                    <a href="{%url 'about'%}" class="nav-item">О нас</a>
+                    <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
+                    <a href="{%url 'navigator'%}" class="nav-item">Навигатор</a>
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
+                </div>
+                <div class="account flex-between">
+                    <p class="account-title">Иван Иванов</p> 
+                    <img class="account-avatar" src="{% static "images/avatar.png"%}" />
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="main-content">
+<div class="about offset bg-white">
+            <div class="container">
+        <div class="flex-between main-article-container">
+            <div class="main-article about-article">
+                <h1>О проекте:</h1>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                     natoque penatibus et magnis dis parturient montes, nascetur 
+                     ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, 
+                     pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, 
+                     fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, 
+                     rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum 
+                    felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.</p>
+            </div>
+            <div class="main-article-img">
+                <img class="account-avatar" src="{% static "images/about.png"%}" />
+            </div>
+        </div>
+        <div class="about-item">      
+            <h2>Брифы проектов ПРООН в Беларуси</h2>
+            <p class="bold">В настоящее время Программа развития ООН в Беларуси реализует 19 проектов развития по трем приоритетным направлениям работы агенства в стране:
+            </p>
+            <p>
+                1) Окружающая среда и энергоэффективность (9 проектов) <br>
+                2) Демократическое управление и Цели устойчивого развития (4 проекта)<br>
+                3) Социально-экономическое развитие (6 проектов)<br>
+            </p>
+            <p>Общий бюджет всех идущих проектов: более 42 миллионов долларов США.</p>
+        </div>
+        <div class="about-item">      
+            <h2>Чего мы хотим достичь</h2>
+            <p class="bold">Деятельность ПРООН в Беларуси в настоящее время регулируется Страновым программным документом (ДСП) на 2016-2020 годы.
+                Основное внимание в документе уделяется трем основным областям в соответствии с национальными приоритетами в области развития:
+            </p>
+            <p>
+                1) Укрепление системы инклюзивного и гибкого управления.<br>
+                2) Развитие зеленой экономики, включая производства, направленные на трудоустройство и обеспечение достойной жизни для уязвимых групп населения.<br>
+                3) Улучшение доступа к базовым услугам для уязвимых групп.  <br>              
+            </p>
+            <p>Ключевые результаты деятельности ПРООН в Беларуси в 2018 году.</p>
+        </div>
+        <div class="partners">
+            <h2 class="partners-title">Наши партнеры:</h2>
+            <div class="partners-logo flex-between">
+                <img class="" src="{% static "images/undp.png"%}" />
+                <img class="" src="{% static "images/belhard.svg"%}" />
+                <img class="" src="{% static "images/bffpp.svg"%}" />
+                <img class="" src="{% static "images/iaea.svg"%}" />
+                <img class="" src="{% static "images/una.svg"%}" />
+            </div>
+        </div>
+        <div class="questions flex-between">
+            <div class="questions-form">
+            <h2>Остались вопросы?<br>
+                Мы с вами свяжемся
+                </h2>
+                <p>Есть вопросы или предложения? Оставьте свои контакты, и мы позвоним с готовым решением.</p>
+            <div class="flex-between">
+                <input class="questions-form-input input" type="text" placeholder="Имя*">
+                <input class="questions-form-input input" type="text" placeholder="Телефон*">
+            </div>
+            <div class="bold">Какой у вас вопрос?</div>
+            <input class="questions-form-input input" type="text" placeholder="Напишите, что именно вас интересует.">
+            <button class="main-button big-button button questions-form-button">Заказать звонок</button>
+            </div>
+            <img class="questions-img" src="{% static "images/about2.png"%}"/>
+        </div>
+       
+
+       
+          
+         
+          
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container flex-between">
+            <div class="address-block">
+                <div class="ontop">
+                    Наверх
+                </div>
+                <p class="phone">+375 29 123 98 98</p>
+                <div class="mail">example@gmail.com</div>
+            </div>
+            <div class="footer-nav">
+                <a href="/" class="footer-nav-item">Маршруты</a>
+                <a href="{%url 'articles'%}" class="footer-nav-item">Статьи</a>
+                <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
+                <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
+                <a href="{%url 'navigator'%}"  class="footer-nav-item">Навигатор</a>
+                <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
+            </div>
+            <div class="footer-text">
+                Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 
+                в рамках проекта «Поддержка экономического развития на местном уровне 
+                в Республике Беларусь», который финансируется Европейским союзом (ЕС)
+                 и реализуется Программой развития ООН (ПРООН) в партнерстве 
+                 с Министерством экономики Республики Беларусь
+            </div>
+            <div class="footer-logo">
+                <a href="/" class="logo flex-between">
+                    <div>
+                        <p class="logo-top">Быхов</p>
+                        <p class="logo-bottom">Велосипедный</p>
+                    </div>
+                    <img src="{% static "images/logo.svg"%}" class="logo-img" />
+                </a>
+                <div class="copy">&copy; 2020 Быхов Велосипедный</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
