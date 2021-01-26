@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css" >
+    <link rel="stylesheet" href="{%static "css/style.css"%}">
 </head>
 <body>
     <header>
@@ -16,26 +17,26 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="./images/logo.svg" class="logo-img" />
+                    <img src="{% static "images/logo.svg"%}" class="logo-img" />
                 </a>
                 <div class="partners">
-                    <img src="./images/es.png" />
-                    <img src="./images/rb.png" />
-                    <img src="./images/undp.png" />
+                    <img src="{% static "images/es.png"%}"  />
+                    <img src="{% static "images/rb.png"%}"  />
+                    <img src="{% static "images/undp.png"%}"  />
                 </div>
             </div>
             <div class="flex-between">
                 <div class="nav">
                     <a href="/" class="nav-item active">Маршруты</a>
-                    <a href="/" class="nav-item">Статьи</a>
-                    <a href="/" class="nav-item">О нас</a>
-                    <a href="/" class="nav-item">Объекты</a>
+                    <a href="{%url 'articles'%}" class="nav-item">Статьи</a>
+                    <a href="{%url 'about'%}" class="nav-item">О нас</a>
+                    <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="/" class="nav-item">Навигатор</a>
                     <a href="/" class="nav-item">Кабинет</a>
                 </div>
                 <div class="account flex-between">
                     <p class="account-title">Иван Иванов</p> 
-                    <img class="account-avatar" src="./images/avatar.png" />
+                    <img class="account-avatar" src="{% static "images/avatar.png"%}"  />
                 </div>
             </div>
         </div>
@@ -59,13 +60,13 @@
                             </div>
                    </div>
                    <div class="article-big-item-image-container">
-                        <img class="article-big-item-image" src="./images/article.png" />
+                        <img class="article-big-item-image" src="{% static "images/article.png"%}" />
                    </div>
 
                </div>
                <div class="articles-container flex-between">
                    <div class="articles-item">
-                        <img class="articles-item-image" src="./images/article2.png" />
+                        <img class="articles-item-image" src="{% static "images/article2.png"%}" />
                         <div class="articles-item-content">
                             <h6>3 причины выбрать велоспорт</h6>
                             <p>Велоспорт — это основа здорового образа жизни для людей
@@ -81,7 +82,7 @@
                         </div>
                    </div>
                    <div class="articles-item">
-                    <img class="articles-item-image" src="./images/article2.png" />
+                    <img class="articles-item-image" src="{% static "images/article2.png"%}" />
                     <div class="articles-item-content">
                         <h6>3 причины выбрать велоспорт</h6>
                         <p>Велоспорт — это основа здорового образа жизни для людей
@@ -97,7 +98,7 @@
                     </div>
                </div>
                <div class="articles-item">
-                <img class="articles-item-image" src="./images/article2.png" />
+                <img class="articles-item-image" src="{% static "images/article2.png"%}" />
                 <div class="articles-item-content">
                     <h6>3 причины выбрать велоспорт</h6>
                     <p>Велоспорт — это основа здорового образа жизни для людей
@@ -113,7 +114,7 @@
                 </div>
            </div>
            <div class="articles-item">
-            <img class="articles-item-image" src="./images/article2.png" />
+            <img class="articles-item-image" src="{% static "images/article2.png"%}"  />
             <div class="articles-item-content">
                 <h6>3 причины выбрать велоспорт</h6>
                 <p>Велоспорт — это основа здорового образа жизни для людей
@@ -173,7 +174,7 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="./images/logo.svg" class="logo-img" />
+                    <img src="{% static "images/logo.svg"%}" class="logo-img" />
                 </a>
                 <div class="copy">&copy; 2020 Быхов Велосипедный</div>
             </div>

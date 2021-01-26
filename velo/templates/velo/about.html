@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css" >
+    <link rel="stylesheet" href="{%static "css/style.css"%}">
 </head>
 <body>
     <header>
@@ -16,26 +17,26 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="./images/logo.svg" class="logo-img" />
+                    <img src="{% static "images/logo.svg"%}" class="logo-img" />
                 </a>
                 <div class="partners">
-                    <img src="./images/es.png" />
-                    <img src="./images/rb.png" />
-                    <img src="./images/undp.png" />
+                    <img src="{% static "images/es.png"%}"  />
+                    <img src="{% static "images/rb.png"%}"  />
+                    <img src="{% static "images/undp.png"%}"  />
                 </div>
             </div>
             <div class="flex-between">
                 <div class="nav">
                     <a href="/" class="nav-item active">Маршруты</a>
-                    <a href="/" class="nav-item">Статьи</a>
-                    <a href="/" class="nav-item">О нас</a>
-                    <a href="/" class="nav-item">Объекты</a>
+                    <a href="{%url 'articles'%}" class="nav-item">Статьи</a>
+                    <a href="{%url 'about'%}" class="nav-item">О нас</a>
+                    <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="/" class="nav-item">Навигатор</a>
                     <a href="/" class="nav-item">Кабинет</a>
                 </div>
                 <div class="account flex-between">
                     <p class="account-title">Иван Иванов</p> 
-                    <img class="account-avatar" src="./images/avatar.png" />
+                    <img class="account-avatar" src="{% static "images/avatar.png"%}" />
                 </div>
             </div>
         </div>
@@ -56,7 +57,7 @@
                     felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.</p>
             </div>
             <div class="main-article-img">
-                <img class="account-avatar" src="./images/about.png" />
+                <img class="account-avatar" src="{% static "images/about.png"%}" />
             </div>
         </div>
         <div class="about-item">      
@@ -85,11 +86,11 @@
         <div class="partners">
             <h2 class="partners-title">Наши партнеры:</h2>
             <div class="partners-logo flex-between">
-                <img class="" src="./images/undp.png" />
-                <img class="" src="./images/belhard.svg" />
-                <img class="" src="./images/bffpp.svg" />
-                <img class="" src="./images/iaea.svg" />
-                <img class="" src="./images/una.svg" />
+                <img class="" src="{% static "images/undp.png"%}" />
+                <img class="" src="{% static "images/belhard.svg"%}" />
+                <img class="" src="{% static "images/bffpp.svg"%}" />
+                <img class="" src="{% static "images/iaea.svg"%}" />
+                <img class="" src="{% static "images/una.svg"%}" />
             </div>
         </div>
         <div class="questions flex-between">
@@ -106,7 +107,7 @@
             <input class="questions-form-input input" type="text" placeholder="Напишите, что именно вас интересует.">
             <button class="main-button big-button button questions-form-button">Заказать звонок</button>
             </div>
-            <img class="questions-img" src="./images/about2.png" />
+            <img class="questions-img" src="{% static "images/about2.png"%}"/>
         </div>
        
 

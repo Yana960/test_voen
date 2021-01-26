@@ -20,4 +20,7 @@ import velo.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', velo.views.showmain, name='showmain'),
+    path('articles/', velo.views.articles, name='articles'),
+    path('/about', velo.views.about, name='about'),
+    path('/objects', velo.views.objects, name='objects'),
 ]
