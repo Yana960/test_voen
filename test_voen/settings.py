@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'velo.apps.VeloConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'velo.apps.VeloConfig',
+    'object.apps.ObjectConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,7 +123,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
 
-    os.path.join(BASE_DIR, 'test_voen/velo/static/')
+    os.path.join(BASE_DIR, 'velo/static/')
 
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

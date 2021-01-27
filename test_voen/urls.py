@@ -18,13 +18,13 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 import velo.views
-
+import object.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', velo.views.showmain, name='showmain'),
     path('articles/', velo.views.articles, name='articles'),
     path('/about', velo.views.about, name='about'),
-    path('/objects', velo.views.objects, name='objects'),
+    path('/objects', object.views.showobject, name='objects'),
     path('/navigator', velo.views.navigator, name='navigator'),
     path('/saved', velo.views.saved, name='saved'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
