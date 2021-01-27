@@ -35,7 +35,7 @@
                     <a href="{%url 'saved'%}"class="nav-item">Кабинет</a>
                 </div>
                 <div class="account flex-between">
-                    <p class="account-title">Иван Иванов</p> 
+                    <p class="account-title">Иван Иванов</p>
                     <img class="account-avatar" src="{% static "images/avatar.png"%}" />
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <i class="search"></i>
                     </div>
                     <div class="tabs-content">
-                        {% for veloobject in object_marsh.all %}
+                        {% for veloobject in object_marsh %}
                         <div class="tab-content-item flex-between">
                             <div class="tab-content-item-plus"></div>
 
@@ -75,24 +75,26 @@
 
                             </div>
                         {% endfor %}
-                        </div>
-                    </div>
+                              </div>
+                            </div>
                 </div>
-
-
             </div>
-
         </div>
     </section>
-    <div class="pagination flex-between">
-                    <i class="pagination-left"></i>
-                    <span>1</span>
-                    <span class="active">2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <i class="pagination-right"></i>
-                </div>
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if object_marsh.has_previous %}
+                                    <a href="?page={{ object_marsh.previous_page_number }}"><</a>
+                                {% endif %}
+                                <span class="current">
+                                    Страница {{ object_marsh.number }} из {{ object_marsh.paginator.num_pages }}
+                                </span>
+                                {% if object_marsh.has_next %}
+                                     <a href="?page={{ object_marsh.next_page_number }}">></a>
+                                {% endif %}
+                            </span>
+                        </div>
+
     <footer>
         <div class="container flex-between">
             <div class="address-block">
@@ -111,10 +113,10 @@
                 <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
             </div>
             <div class="footer-text">
-                Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 
-                в рамках проекта «Поддержка экономического развития на местном уровне 
+                Сайт разработан в рамках реализации инициативы «Быхов-инновационный»,
+                в рамках проекта «Поддержка экономического развития на местном уровне
                 в Республике Беларусь», который финансируется Европейским союзом (ЕС)
-                 и реализуется Программой развития ООН (ПРООН) в партнерстве 
+                 и реализуется Программой развития ООН (ПРООН) в партнерстве
                  с Министерством экономики Республики Беларусь
             </div>
             <div class="footer-logo">
