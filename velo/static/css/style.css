@@ -33,7 +33,7 @@ header{
     outline: 0;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 a {
     text-decoration: none;
@@ -827,4 +827,3 @@ footer {
 .settings-form h3 {
     margin-bottom: 20px;
 }
-

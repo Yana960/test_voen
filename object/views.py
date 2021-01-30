@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def showobject(request):
 
     object_marsh = VeloObject.objects.all()
-    paginator = Paginator(object_marsh, 1)  # Show 25 contacts per page
+    paginator = Paginator(object_marsh, 5)  # Show 25 contacts per page
     page = request.GET.get('page')
     try:
         object_marsh = paginator.page(page)

@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'velo.apps.VeloConfig',
     'object.apps.ObjectConfig',
+    'login.apps.LoginConfig',
+    'registration.apps.RegistrationConfig',
+    'articles.apps.ArticlesConfig',
 ]
 
 MIDDLEWARE = [

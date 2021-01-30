@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {%load static%}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +20,7 @@
                     <img src="{% static "images/logo.svg"%}" class="logo-img" />
                 </a>
                 <div class="partners">
-                    <img src="{% static "images/es.png"%}" />
+                    <img src="{% static "images/es.png"%}"  />
                     <img src="{% static "images/rb.png"%}"  />
                     <img src="{% static "images/undp.png"%}"  />
                 </div>
@@ -31,77 +30,69 @@
                     <a href="/" class="nav-item active">Маршруты</a>
                     <a href="{%url 'articles'%}" class="nav-item">Статьи</a>
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
-                    <a href="{% url 'objects'%}" class="nav-item">Объекты</a>
+                    <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="{%url 'navigator'%}"  class="nav-item">Навигатор</a>
-                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>                
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
                 </div>
                 <div class="account flex-between">
                     <p class="account-title">Иван Иванов</p> 
-                    <img class="account-avatar" src="{% static "images/avatar.png"%}"/>
+                    <img class="account-avatar" src="{% static "images/avatar.png"%}"  />
                 </div>
             </div>
         </div>
     </header>
     <section class="main-content">
-     <div class="container">
-        <div class="flex-between">
-            <h1>Выбрать тип маршрута:</h1>
-            <p>Вы можете с легкостью определиться с маршрутом на свое 
-                усмотрение и отправиться <br> в незабываемое приключение по культурным местам нашего города.</p>
-        </div>
-         <div class="flex-between routes">
-            {% for velomarsh in marhs.all %}
-            <div class="route">
-                <img class="route-img"  src="{{ velomarsh.marsh_image.url }}"  />
-                <div class="flex-between">
-                    <p class="route-title">{{ velomarsh.marsh_text }}</p>
-                    <i class="arrow-right"></i>
-                </div>
-            </div>
+<div class="articles bg-white">
+            <div class="container">
+               <div class="article-big-item flex-between">
+                   <div class="article-big-item-content">
+                    <h1>{{ first_article.article_heading }}</h1>
+                        <p>{{ first_article.article_text}}</p>
+                            <div class="flex-between">
+                                <div class="article-big-item-date">{{ first_article.article_date }}</div>
+                                <i class="arrow-right"></i>
+                            </div>
+                   </div>
+                   <div class="article-big-item-image-container">
+                        <img class="article-big-item-image" src="{{ first_article.article_image.url }}" />
+                   </div>
 
-            {% endfor %}
+               </div>
+               <div class="articles-container flex-between">
+
+                   {% for veloarticles in artecles_velo %}
+                   <div class="articles-item">
+                        <img class="articles-item-image" src="{{ veloarticles.article_image.url }}" />
+                        <div class="articles-item-content">
+                            <h6>{{ veloarticles.article_heading }}</h6>
+                            <p>{{ veloarticles.article_text}}</p>
+                            <div class="flex-between">
+                                <div class="articles-item-date">{{ veloarticles.article_date }}</div>
+                                <i class="arrow-right"></i>
+                            </div>
+                        </div>
+                   </div>
+                    {% endfor %}
+
+       </div>
+               </div>
+
+            </div>
         </div>
-        <button class="main-button big-button button">Создать новый маршрут</button>
-    </div> 
-    <div class="faq-section">
-        <div class="container faq-container">
-            <div class="right-faq-container">
-            <h2>Часто задаваемые вопросы</h2>
-            <div class="faq-item">
-                <div class="faq-title">
-                    <div class="faq-text">Где остановиться?</div>
-                    <i class="faq-icon" ></i>
-                </div>
-                <div class="faq-content"></div>
-            </div>
-            <div class="faq-item active">
-                <div class="faq-title">
-                    <div class="faq-text">Сколько можно выбрать объектов за один маршрут?</div>
-                    <i class="faq-icon-active"></i>
-                </div>
-                <div class="faq-content">
-                    Количество объектов которые можно отметить при помтроении маршрутов неогранично. Вы можете выбирать любой объет исходя из его типа.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-title">
-                    <div class="faq-text">Как выбирать маршрут?</div>
-                    <i class="faq-icon"></i>
-                </div>
-                <div class="faq-content"></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-title">
-                    <div class="faq-text">Как построить свой маршрут?</div>
-                    <i class="faq-icon"></i>
-                </div>
-                <div class="faq-content"></div>
-            </div>
-            <button class="reverse-button big-button button">Задать свой вопрос</button>
-        </div>
-        </div>   
-    </div> 
     </section>
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if artecles_velo.has_previous %}
+                                    <a href="?page={{ artecles_velo.previous_page_number }}"><</a>
+                                {% endif %}
+                                <span class="current">
+                                    Страница {{ artecles_velo.number }} из {{ artecles_velo.paginator.num_pages }}
+                                </span>
+                                {% if artecles_velo.has_next %}
+                                     <a href="?page={{ artecles_velo.next_page_number }}">></a>
+                                {% endif %}
+                            </span>
+                        </div>
     <footer>
         <div class="container flex-between">
             <div class="address-block">
@@ -112,13 +103,12 @@
                 <div class="mail">example@gmail.com</div>
             </div>
             <div class="footer-nav">
-                <a href="/" class="footer-nav-item">Маршруты</a>
+               <a href="/" class="footer-nav-item">Маршруты</a>
                 <a href="{%url 'articles'%}" class="footer-nav-item">Статьи</a>
                 <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
                 <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
-                <a href="{%url 'navigator'%}" class="footer-nav-item">Навигатор</a>
+                <a href="{%url 'navigator'%}"  class="footer-nav-item">Навигатор</a>
                 <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
-                <a href="{%url 'registration'%}" class="footer-nav-item">Регистрация</a>
             </div>
             <div class="footer-text">
                 Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 
@@ -133,7 +123,7 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="{% static "images/logo.svg" class="logo-img"%}"  />
+                    <img src="{% static "images/logo.svg"%}" class="logo-img" />
                 </a>
                 <div class="copy">&copy; 2020 Быхов Велосипедный</div>
             </div>

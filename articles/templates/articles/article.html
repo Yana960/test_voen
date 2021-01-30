@@ -33,74 +33,42 @@
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
                     <a href="{% url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="{%url 'navigator'%}"  class="nav-item">Навигатор</a>
-                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>                
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
                 </div>
                 <div class="account flex-between">
-                    <p class="account-title">Иван Иванов</p> 
+                    <p class="account-title">Иван Иванов</p>
                     <img class="account-avatar" src="{% static "images/avatar.png"%}"/>
                 </div>
             </div>
         </div>
     </header>
     <section class="main-content">
-     <div class="container">
-        <div class="flex-between">
-            <h1>Выбрать тип маршрута:</h1>
-            <p>Вы можете с легкостью определиться с маршрутом на свое 
-                усмотрение и отправиться <br> в незабываемое приключение по культурным местам нашего города.</p>
+<div class="article bg-white">
+            <div class="container">
+        {% for veloarticles in artecles_velo %}
+        <div class="flex-between main-article-container">
+            <div class="main-article">
+                <h1>{{ veloarticles.article_heading }}</h1>
+                <p>{{ veloarticles.article_text}}</p>
+            </div>
+            <div class="main-article-img">
+                <img class="account-avatar" src="{{ veloarticles.article_image.url }}" />
+            </div>
         </div>
-         <div class="flex-between routes">
-            {% for velomarsh in marhs.all %}
-            <div class="route">
-                <img class="route-img"  src="{{ velomarsh.marsh_image.url }}"  />
-                <div class="flex-between">
-                    <p class="route-title">{{ velomarsh.marsh_text }}</p>
-                    <i class="arrow-right"></i>
-                </div>
+        <div class="article-content">
+                {{ veloarticles.article_text}}
+        </div>
+        {% endfor %}
+          
+            <div class="match-articles">
+                <h5>Похожие статьи:</h5>
+                <a href="#">Пример похожей статьи 1</a>
+                <a href="#">Пример похожей статьи 2</a>
+                <a href="#">Пример похожей статьи 3</a>
             </div>
 
-            {% endfor %}
+            </div>
         </div>
-        <button class="main-button big-button button">Создать новый маршрут</button>
-    </div> 
-    <div class="faq-section">
-        <div class="container faq-container">
-            <div class="right-faq-container">
-            <h2>Часто задаваемые вопросы</h2>
-            <div class="faq-item">
-                <div class="faq-title">
-                    <div class="faq-text">Где остановиться?</div>
-                    <i class="faq-icon" ></i>
-                </div>
-                <div class="faq-content"></div>
-            </div>
-            <div class="faq-item active">
-                <div class="faq-title">
-                    <div class="faq-text">Сколько можно выбрать объектов за один маршрут?</div>
-                    <i class="faq-icon-active"></i>
-                </div>
-                <div class="faq-content">
-                    Количество объектов которые можно отметить при помтроении маршрутов неогранично. Вы можете выбирать любой объет исходя из его типа.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-title">
-                    <div class="faq-text">Как выбирать маршрут?</div>
-                    <i class="faq-icon"></i>
-                </div>
-                <div class="faq-content"></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-title">
-                    <div class="faq-text">Как построить свой маршрут?</div>
-                    <i class="faq-icon"></i>
-                </div>
-                <div class="faq-content"></div>
-            </div>
-            <button class="reverse-button big-button button">Задать свой вопрос</button>
-        </div>
-        </div>   
-    </div> 
     </section>
     <footer>
         <div class="container flex-between">

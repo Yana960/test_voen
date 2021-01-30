@@ -6,9 +6,6 @@ def showmain(request):
 	marhs = VeloMarsh.objects
 	return render(request, 'velo/main.html',  {'marhs': marhs})
 
-def articles(request):
-	return render(request, 'velo/articles.html')
-
 def about(request):
 	return render(request, 'velo/about.html')
 
