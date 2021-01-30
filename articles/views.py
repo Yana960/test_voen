@@ -21,5 +21,5 @@ def showarticles(request):
 
 
 def specific_article(request, article_id):
-	article = get_object_or_404(VeloArticles, pk=article_id)
-	return render(request, 'articles/article.html', {'article': article})
+    article = VeloArticles.objects.get(id=article_id)
+    return render(request, 'articles/specific_article.html', {'article': article})

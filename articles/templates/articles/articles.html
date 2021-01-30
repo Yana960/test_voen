@@ -46,7 +46,7 @@
             <div class="container">
                <div class="article-big-item flex-between">
                    <div class="article-big-item-content">
-                    <h1>{{ first_article.article_heading }}</h1>
+                    <a href="{%url 'specific_article' 1 %}"><h1>{{ first_article.article_heading }}</h1></a>
                         <p>{{ first_article.article_text}}</p>
                             <div class="flex-between">
                                 <div class="article-big-item-date">{{ first_article.article_date }}</div>
@@ -64,7 +64,7 @@
                    <div class="articles-item">
                         <img class="articles-item-image" src="{{ veloarticles.article_image.url }}" />
                         <div class="articles-item-content">
-                            <h6>{{ veloarticles.article_heading }}</h6>
+                            <a href="{%url 'specific_article' veloarticles.id %}"><h6>{{ veloarticles.article_heading }}</h6></a>
                             <p>{{ veloarticles.article_text}}</p>
                             <div class="flex-between">
                                 <div class="articles-item-date">{{ veloarticles.article_date }}</div>
@@ -109,6 +109,7 @@
                 <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
                 <a href="{%url 'navigator'%}"  class="footer-nav-item">Навигатор</a>
                 <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
+
             </div>
             <div class="footer-text">
                 Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 

@@ -45,21 +45,19 @@
     <section class="main-content">
 <div class="article bg-white">
             <div class="container">
-        {% for veloarticles in artecles_velo %}
+
         <div class="flex-between main-article-container">
             <div class="main-article">
-                <h1>{{ veloarticles.article_heading }}</h1>
-                <p>{{ veloarticles.article_text}}</p>
+                <h1>{{ article.article_heading }}</h1>
+                <p>{{ article.article_text}}</p>
             </div>
             <div class="main-article-img">
-                <img class="account-avatar" src="{{ veloarticles.article_image.url }}" />
+                <img class="account-avatar" src="{{ article.article_image.url }}" />
             </div>
         </div>
         <div class="article-content">
-                {{ veloarticles.article_text}}
+                {{ article.article_big_text}}
         </div>
-        {% endfor %}
-          
             <div class="match-articles">
                 <h5>Похожие статьи:</h5>
                 <a href="#">Пример похожей статьи 1</a>
@@ -89,10 +87,10 @@
                 <a href="{%url 'registration'%}" class="footer-nav-item">Регистрация</a>
             </div>
             <div class="footer-text">
-                Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 
-                в рамках проекта «Поддержка экономического развития на местном уровне 
+                Сайт разработан в рамках реализации инициативы «Быхов-инновационный»,
+                в рамках проекта «Поддержка экономического развития на местном уровне
                 в Республике Беларусь», который финансируется Европейским союзом (ЕС)
-                 и реализуется Программой развития ООН (ПРООН) в партнерстве 
+                 и реализуется Программой развития ООН (ПРООН) в партнерстве
                  с Министерством экономики Республики Беларусь
             </div>
             <div class="footer-logo">

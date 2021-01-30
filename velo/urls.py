@@ -6,7 +6,6 @@ from articles import views
 urlpatterns = [
 	path('', views.showmain, name='showmain'),
 	path('/articles', articles.views.showarticles, name='articles'),
-	path('/articles/<int:article_id>/', articles.views.specific_article, name='specific_article'),
 	path('/about', views.about, name='about'),
 	path('/objects', object.views.showobject, name='objects'),
 	path('/registration', registration.views.signup, name='signup'),
