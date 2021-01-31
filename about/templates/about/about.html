@@ -99,22 +99,16 @@
                 Мы с вами свяжемся
                 </h2>
                 <p>Есть вопросы или предложения? Оставьте свои контакты, и мы позвоним с готовым решением.</p>
-            <div class="flex-between">
-                <input class="questions-form-input input" type="text" placeholder="Имя*">
-                <input class="questions-form-input input" type="text" placeholder="Телефон*">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-actions form-group ">
+                <button type="submit" class="form-control btn btn-success">Задать вопрос</button>
+                </div>
+            </form>
             </div>
-            <div class="bold">Какой у вас вопрос?</div>
-            <input class="questions-form-input input" type="text" placeholder="Напишите, что именно вас интересует.">
-            <button class="main-button big-button button questions-form-button">Заказать звонок</button>
-            </div>
-            <img class="questions-img" src="{% static "images/about2.png"%}"/>
+            <img class="questions-img" src="{% static "images/about2.png"%}" />
         </div>
-       
-
-       
-          
-         
-          
             </div>
         </div>
     </section>
@@ -148,7 +142,7 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="./images/logo.svg" class="logo-img" />
+                    <img src="{% static "images/logo.svg"%}" class="logo-img" />
                 </a>
                 <div class="copy">&copy; 2020 Быхов Велосипедный</div>
             </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {%load static%}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +10,14 @@
     <link rel="stylesheet" href="{%static "css/style.css"%}">
 </head>
 <body>
+
+    <script>
+    function view(n) {
+    style = document.getElementById(n).style;
+    style.display = (style.display == 'block') ? 'none' : 'block';
+    }
+
+    </script>
     <header>
         <div class="container">
             <div class="top-header flex-between">
@@ -48,35 +57,17 @@
             <p>Вы можете с легкостью определиться с маршрутом на свое 
                 усмотрение и отправиться <br> в незабываемое приключение по культурным местам нашего города.</p>
         </div>
-        <div class="flex-between routes">
+         <div class="flex-between routes">
+            {% for velomarsh in marhs.all %}
             <div class="route">
-                <img class="route-img" src="{% static "images/sword.svg"%}"  />
+                <img class="route-img"  src="{{ velomarsh.marsh_image.url }}"  />
                 <div class="flex-between">
-                    <p class="route-title">Военный</p>
+                    <p class="route-title">{{ velomarsh.marsh_text }}</p>
                     <i class="arrow-right"></i>
                 </div>
             </div>
-            <div class="route">
-                <img class="route-img" src="{% static "images/historic.svg"%}"  />
-                <div class="flex-between">
-                    <p class="route-title">Исторический</p>
-                    <i class="arrow-right"></i>
-                </div>
-            </div>
-            <div class="route">
-                <img class="route-img" src="{% static "images/cultures.svg"%}"  />
-                <div class="flex-between">
-                    <p class="route-title">Ремесленический</p>
-                    <i class="arrow-right"></i>
-                </div>
-            </div>
-            <div class="route">
-                <img class="route-img" src="{% static "images/basketball.svg"%}"  />
-                <div class="flex-between">
-                    <p class="route-title">Спортивный</p>
-                    <i class="arrow-right"></i>
-                </div>
-            </div>
+
+            {% endfor %}
         </div>
         <button class="main-button big-button button">Создать новый маршрут</button>
     </div> 
@@ -84,36 +75,20 @@
         <div class="container faq-container">
             <div class="right-faq-container">
             <h2>Часто задаваемые вопросы</h2>
+            {% for que in quetion.all %}
             <div class="faq-item">
+                <div class="faq-item active">
                 <div class="faq-title">
-                    <div class="faq-text">Где остановиться?</div>
-                    <i class="faq-icon" ></i>
+                    <a onclick="view({{que.id}})"; class="a" return false"><div class="faq-text">{{ que.que_text}}</div></a>
                 </div>
-                <div class="faq-content"></div>
+                <div>
+                
+                <div id='{{ que.id}}' style="display: none;">
+                <div class="faq-content">{{ que.que_text_raz}}</div>
             </div>
-            <div class="faq-item active">
-                <div class="faq-title">
-                    <div class="faq-text">Сколько можно выбрать объектов за один маршрут?</div>
-                    <i class="faq-icon-active"></i>
-                </div>
-                <div class="faq-content">
-                    Количество объектов которые можно отметить при помтроении маршрутов неогранично. Вы можете выбирать любой объет исходя из его типа.
-                </div>
             </div>
-            <div class="faq-item">
-                <div class="faq-title">
-                    <div class="faq-text">Как выбирать маршрут?</div>
-                    <i class="faq-icon"></i>
-                </div>
-                <div class="faq-content"></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-title">
-                    <div class="faq-text">Как построить свой маршрут?</div>
-                    <i class="faq-icon"></i>
-                </div>
-                <div class="faq-content"></div>
-            </div>
+                {% endfor %}
+            
             <button class="reverse-button big-button button">Задать свой вопрос</button>
         </div>
         </div>   

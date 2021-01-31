@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'about.apps.AboutConfig',
+    'navigator.apps.NavigatorConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +124,12 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
 
-    os.path.join(BASE_DIR, 'test_voen/velo/static/')
+    os.path.join(BASE_DIR, 'velo/static/')
 
 ]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/awesome_media/'
+
+RECIPIENTS_EMAIL = ['yana.shavel@bk.ru']   # замените на свою почту
+DEFAULT_FROM_EMAIL = 'yana.shavel@bk.ru'  # замените на свою почту
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
