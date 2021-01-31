@@ -128,7 +128,7 @@ STATICFILES_DIRS = [
 
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/awesome_media/'
+MEDIA_URL = '/media/'
 
 RECIPIENTS_EMAIL = ['yana.shavel@bk.ru']   # замените на свою почту
 DEFAULT_FROM_EMAIL = 'yana.shavel@bk.ru'  # замените на свою почту

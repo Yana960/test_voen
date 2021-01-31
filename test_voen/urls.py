@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import velo.views
+import about.views
+import navigator.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', velo.views.showmain, name='showmain'),
     path('articles/', velo.views.articles, name='articles'),
-    path('/about', velo.views.about, name='about'),
-    path('/objects', velo.views.navigator, name='objects'),
-    path('/navigator', velo.views.objects, name='navigator'),
+    path('/about', about.views.about, name='about'),
+    path('/objects', velo.views.objects, name='objects'),
+    path('/navigator', navigator.views.navigator, name='navigator'),
     path('/saved', velo.views.saved, name='saved'),
 ]
