@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {%load static%}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,14 +9,6 @@
     <link rel="stylesheet" href="{%static "css/style.css"%}">
 </head>
 <body>
-
-    <script>
-    function view(n) {
-    style = document.getElementById(n).style;
-    style.display = (style.display == 'block') ? 'none' : 'block';
-    }
-
-    </script>
     <header>
         <div class="container">
             <div class="top-header flex-between">
@@ -26,12 +17,12 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="{% static "images/logo.svg"%}" class="logo-img" />
+                    <img src="./images/logo.svg" class="logo-img" />
                 </a>
                 <div class="partners">
-                    <img src="{% static "images/es.png"%}"  />
-                    <img src="{% static "images/rb.png"%}"  />
-                    <img src="{% static "images/undp.png"%}"  />
+                    <img src="./images/es.png" />
+                    <img src="./images/rb.png" />
+                    <img src="./images/undp.png" />
                 </div>
             </div>
             <div class="flex-between">
@@ -39,60 +30,63 @@
                     <a href="/" class="nav-item active">Маршруты</a>
                     <a href="{%url 'articles'%}" class="nav-item">Статьи</a>
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
-                    <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
+                    <a href="{% url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="{%url 'navigator'%}"  class="nav-item">Навигатор</a>
-                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>                
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
                 </div>
                 <div class="account flex-between">
                     <p class="account-title">Иван Иванов</p> 
-                    <img class="account-avatar" src="{% static "images/avatar.png"%}"/>
+                    <img class="account-avatar" src="./images/avatar.png" />
                 </div>
             </div>
         </div>
     </header>
     <section class="main-content">
-     <div class="container">
-        <div class="flex-between">
-            <h1>Выбрать тип маршрута:</h1>
-            <p>Вы можете с легкостью определиться с маршрутом на свое 
-                усмотрение и отправиться <br> в незабываемое приключение по культурным местам нашего города.</p>
-        </div>
-         <div class="flex-between routes">
-             {% for velomarsh in marhs.all %}
-            <div class="route">
-                <img class="route-img"  src="{{ velomarsh.marsh_image.url }}"  />
-                <div class="flex-between">
-                    <a href="{%url 'showhistorymarsh' velomarsh.id %}"><p class="route-title">{{ velomarsh.marsh_text }}</p></a>
-                    <i class="arrow-right"></i>
+        <div class="type-route">
+            <div class="container">
+                <div class="navigation">
+                    <i class="back"></i>
+                    <span class="navigation-title">Назад</span>
                 </div>
-            </div>
 
-            {% endfor %}
+                <h2>{{ object.object_heading }}</h2>
+   
+             <div class="flex-between">
+                 <div class="object-map object-item">
+                    <img src="{{ object.object_image_map.url }}" />
+                 </div>
+                 <div class="object-slider object-item">
+                    <img src="{{ object.object_image.url }}"  />
+                 </div>
+             </div>
+             <div class="flex-between">
+                 <div class="object-desc">
+                    <div class="object-desc-item">
+                        <i class="pin"></i>
+                        <span>{{ object.object_addr }}</span>
+                    </div>
+                    <div class="object-desc-item">
+                        <i class="contact"></i>
+                        <span>{{ object.object_phone}} | {{ object.object_email }}</span>
+                    </div>
+                 </div>
+                 <div class="button reverse-button small-button">
+                    Посмотреть видео
+                    <i class="youtube"></i>
+                 </div>
+             </div>
+             <div class="object-information ">
+                <i class="info"></i>
+                <span>Описание предоставляемых услуг, описание 
+                    предоставляемых услуг, описание предоставляемых 
+                    услуг, описание предоставляемых услуг, описание 
+                    предоставляемых услуг, описание предоставляемых 
+                    услуг.</span>
+             </div>
+             <div class="object-content">
+
+                {{ object.object_big_text}}
         </div>
-        <button class="main-button big-button button">Создать новый маршрут</button>
-    </div> 
-    <div class="faq-section">
-        <div class="container faq-container">
-            <div class="right-faq-container">
-            <h2>Часто задаваемые вопросы</h2>
-            {% for que in quetion.all %}
-            <div class="faq-item">
-                <div class="faq-item active">
-                <div class="faq-title">
-                    <a onclick="view({{que.id}})"; class="a" return false"><div class="faq-text">{{ que.que_text}}</div></a>
-                </div>
-                <div>
-                
-                <div id='{{ que.id}}' style="display: none;">
-                <div class="faq-content">{{ que.que_text_raz}}</div>
-            </div>
-            </div>
-                {% endfor %}
-            
-            <button class="reverse-button big-button button">Задать свой вопрос</button>
-        </div>
-        </div>   
-    </div> 
     </section>
     <footer>
         <div class="container flex-between">
@@ -104,7 +98,7 @@
                 <div class="mail">example@gmail.com</div>
             </div>
             <div class="footer-nav">
-                <a href="/" class="footer-nav-item">Маршруты</a>
+                 <a href="/" class="footer-nav-item">Маршруты</a>
                 <a href="{%url 'articles'%}" class="footer-nav-item">Статьи</a>
                 <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
                 <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
@@ -125,7 +119,7 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="{% static "images/logo.svg" class="logo-img"%}"  />
+                    <img src="./images/logo.svg" class="logo-img" />
                 </a>
                 <div class="copy">&copy; 2020 Быхов Велосипедный</div>
             </div>

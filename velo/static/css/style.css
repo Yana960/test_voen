@@ -33,7 +33,7 @@ header{
     outline: 0;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 a {
     text-decoration: none;
@@ -44,13 +44,14 @@ a:hover {
     outline: 0;
 }
 .flex-between {
+
     display: flex;
+    flex-flow: wrap;
     justify-content: space-between;
     align-items: center;
 }
 img {
     border: 0;
-    max-width: 100%;
 }
 p {
     margin: 0;
@@ -456,6 +457,7 @@ footer {
 }
 .tab-content-item-desc p {
     font-size: 16px;
+    width: 300px;
     height: 154px;
     overflow: hidden;
     margin-bottom: 20px;
@@ -479,6 +481,7 @@ footer {
     background: url('./images/add.svg') no-repeat;
 }
 .tabs-content {
+
     max-height: 800px;
     overflow: auto;
 }
@@ -825,20 +828,4 @@ footer {
 }
 .settings-form h3 {
     margin-bottom: 20px;
-}
-
-
-details {
-margin-left: 0px;
-}
-
-details summary span {
-    background: url('img/plus.svg') no-repeat scroll 0 0;
-    margin-left: -20px;
-    padding-left:20px;
-}
-details[open] summary span {
-    background: url('img/minus.svg') no-repeat scroll 0 0;
-    margin-left: -20px;
-    padding-left:20px;
 }

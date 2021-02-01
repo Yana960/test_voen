@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'about.apps.AboutConfig',
     'easy_maps',
-
+    'object.apps.ObjectConfig',
+    'login.apps.LoginConfig',
+    'registration.apps.RegistrationConfig',
+    'articles.apps.ArticlesConfig',
 ]
 
 EASY_MAPS_GOOGLE_KEY = 'AIzaSyA7IpK0IOJta1ex1OCoi8T5mrKys-MHfF4'
