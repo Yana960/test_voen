@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'navigator.apps.NavigatorConfig',
     'velo.apps.VeloConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,8 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'about.apps.AboutConfig',
-    'navigator.apps.NavigatorConfig',
+    'easy_maps',
+
 ]
+
+EASY_MAPS_GOOGLE_KEY = 'AIzaSyA7IpK0IOJta1ex1OCoi8T5mrKys-MHfF4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,3 +137,4 @@ MEDIA_URL = '/media/'
 RECIPIENTS_EMAIL = ['yana.shavel@bk.ru']   # замените на свою почту
 DEFAULT_FROM_EMAIL = 'yana.shavel@bk.ru'  # замените на свою почту
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
