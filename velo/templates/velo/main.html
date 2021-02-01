@@ -54,7 +54,7 @@
             <div class="route">
                 <img class="route-img"  src="{{ velomarsh.marsh_image.url }}"  />
                 <div class="flex-between">
-                    <p class="route-title">{{ velomarsh.marsh_text }}</p>
+                    <a href="{%url 'showhistorymarsh' velomarsh.id %}"><p class="route-title">{{ velomarsh.marsh_text }}</p></a>
                     <i class="arrow-right"></i>
                 </div>
             </div>

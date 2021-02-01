@@ -24,10 +24,13 @@ import articles.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', velo.views.showmain, name='showmain'),
+    path('route/', velo.views.showohistorymarsh, name='showohistorymarsh'),
+    path('<int:marsh_id>/', velo.views.showohistorymarsh, name='showhistorymarsh'),
     path('/articles', articles.views.showarticles, name='articles'),
     path('/articles/<int:article_id>/', articles.views.specific_article, name='specific_article'),
     path('/about', velo.views.about, name='about'),
     path('/objects', object.views.showobject, name='objects'),
+    path('/objects/<int:object_id>/', object.views.specific_object, name='specific_object'),
     path('/registration', registration.views.signup, name='registration'),
     path('/navigator', velo.views.navigator, name='navigator'),
     path('/saved', velo.views.saved, name='saved'),

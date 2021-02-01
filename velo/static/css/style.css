@@ -44,7 +44,9 @@ a:hover {
     outline: 0;
 }
 .flex-between {
+
     display: flex;
+    flex-flow: wrap;
     justify-content: space-between;
     align-items: center;
 }

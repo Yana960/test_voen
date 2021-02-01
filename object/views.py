@@ -19,4 +19,6 @@ def showobject(request):
         object_marsh = paginator.page(paginator.num_pages)
     return render(request, 'object/objects.html', {'object_marsh': object_marsh})
 
-
+def specific_object(request, object_id):
+    object = VeloObject.objects.get(id=object_id)
+    return render(request, 'object/specific_object.html', {'object': object})

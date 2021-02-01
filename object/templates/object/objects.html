@@ -59,7 +59,7 @@
                         <div class="tab-content-item flex-between">
                             <div class="tab-content-item-plus"></div>
                             <div class="tab-content-item-desc">
-                                <h3>{{ veloobject.object_heading }}</h3>
+                                <a href="{%url 'specific_object' veloobject.id %}"><h3>{{ veloobject.object_heading }}</h3></a>>
                                 <p>{{ veloobject.object_text }}</p>
                                     <div class="flex-between">
                                         <div class="left-add green">+ Добавить в избранное</div>

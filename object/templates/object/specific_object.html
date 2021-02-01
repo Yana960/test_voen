@@ -27,7 +27,7 @@
             </div>
             <div class="flex-between">
                 <div class="nav">
-                   <a href="/" class="nav-item active">Маршруты</a>
+                    <a href="/" class="nav-item active">Маршруты</a>
                     <a href="{%url 'articles'%}" class="nav-item">Статьи</a>
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
                     <a href="{% url 'objects'%}" class="nav-item">Объекты</a>
@@ -48,56 +48,44 @@
                     <i class="back"></i>
                     <span class="navigation-title">Назад</span>
                 </div>
-                <div class="flex-between">
-                    <h2><span class="green">{{marsh.marsh_text}}</span> маршрут</h2>
-                    <div class="routes-settings">
-                        <i class="filter"></i>
-                        <i class="search"></i>
+
+                <h2>{{ object.object_heading }}</h2>
+   
+             <div class="flex-between">
+                 <div class="object-map object-item">
+                    <img src="{{ object.object_image_map.url }}" />
+                 </div>
+                 <div class="object-slider object-item">
+                    <img src="{{ object.object_image.url }}"  />
+                 </div>
+             </div>
+             <div class="flex-between">
+                 <div class="object-desc">
+                    <div class="object-desc-item">
+                        <i class="pin"></i>
+                        <span>{{ object.object_addr }}</span>
                     </div>
-                </div>        
-                <div class="historic-routes">
-
-                    {% if marsh.id == 2%}
-                        {% for historymarsh in history_marsh %}
-                    <div class="historic-routes-item flex-between">
-                        <div class="historic-routes-item-frame">
-                            <img src="{{ historymarsh.history_marsh_image.url }}" />
-                        </div>
-                        <div class="historic-routes-item-content">
-
-                            <h3>{{ historymarsh.history_marsh_name }}</h3>
-                            <div class="clocks flex">
-                                <div class="clocks-item clocks-item-miles">{{ historymarsh.history_marsh_km }} км</div>
-                                <div class="clocks-item clocks-item-hours">{{ historymarsh.history_marsh_time }} ч</div>
-                                <div class="clocks-item clocks-item-objects">{{ historymarsh.history_marsh_obj }} объектов</div>
-                            </div>
-                            <div class="historic-routes-item-text">
-                               {{ historymarsh.history_marsh_text }}
-                            </div>
-                            <div class="historic-routes-item-buttons flex">
-                                <button class="reverse-button small-button button">Редактировать маршрут</button>
-                                <button class="main-button small-button button">Начать поездку</button>
-                            </div>
-                        </div>
+                    <div class="object-desc-item">
+                        <i class="contact"></i>
+                        <span>{{ object.object_phone}} | {{ object.object_email }}</span>
                     </div>
-                        {% endfor %}
+                 </div>
+                 <div class="button reverse-button small-button">
+                    Посмотреть видео
+                    <i class="youtube"></i>
+                 </div>
+             </div>
+             <div class="object-information ">
+                <i class="info"></i>
+                <span>Описание предоставляемых услуг, описание 
+                    предоставляемых услуг, описание предоставляемых 
+                    услуг, описание предоставляемых услуг, описание 
+                    предоставляемых услуг, описание предоставляемых 
+                    услуг.</span>
+             </div>
+             <div class="object-content">
 
-                </div>
-                <div class="pagination">
-                            <span class="step-links">
-                                {% if history_marsh.has_previous %}
-                                    <a href="?page={{ history_marsh.previous_page_number }}"><</a>
-                                {% endif %}
-                                <span class="current">
-                                    Страница {{ history_marsh.number }} из {{ history_marsh.paginator.num_pages }}
-                                </span>
-                                {% if history_marsh.has_next %}
-                                     <a href="?page={{ history_marsh.next_page_number }}">></a>
-                                {% endif %}
-                            </span>
-                        </div>
-                {% endif %}
-            </div>
+                {{ object.object_big_text}}
         </div>
     </section>
     <footer>
@@ -110,7 +98,7 @@
                 <div class="mail">example@gmail.com</div>
             </div>
             <div class="footer-nav">
-                <a href="/" class="footer-nav-item">Маршруты</a>
+                 <a href="/" class="footer-nav-item">Маршруты</a>
                 <a href="{%url 'articles'%}" class="footer-nav-item">Статьи</a>
                 <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
                 <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
