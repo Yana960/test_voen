@@ -39,11 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'velo.apps.VeloConfig',
     'object.apps.ObjectConfig',
-    'login.apps.LoginConfig',
     'registration.apps.RegistrationConfig',
     'articles.apps.ArticlesConfig',
+    'about.apps.AboutConfig',
+    'navigator.apps.NavigatorConfig',
+    'easy_maps',
+    'crispy_forms',
+    'accounts',
+    'save.apps.SaveConfig',
 ]
+LOGIN_REDIRECT_URL =  '/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+EASY_MAPS_GOOGLE_KEY = 'AIzaSyA7IpK0IOJta1ex1OCoi8T5mrKys-MHfF4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -108,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
@@ -131,3 +139,7 @@ STATICFILES_DIRS = [
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/awesome_media/'
+
+RECIPIENTS_EMAIL = ['yana.shavel@bk.ru']   # замените на свою почту
+DEFAULT_FROM_EMAIL = 'yana.shavel@bk.ru'  # замените на свою почту
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

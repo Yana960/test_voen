@@ -6,12 +6,11 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-        return render(request, 'velo/main.html')
+            user = form.save()
+            user.refresh_from_db()  # load the profile instance created by the signal
+            user = form.save()
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('login')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})

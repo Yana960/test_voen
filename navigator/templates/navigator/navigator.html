@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {%load static%}
+{% load easy_maps_tags %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,10 +34,16 @@
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
                     <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="{%url 'navigator'%}" class="nav-item">Навигатор</a>
-                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>                    
+                    {% if user.is_authenticated %}
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
+                    {% endif %}
                 </div>
                 <div class="account flex-between">
-                    <p class="account-title">Иван Иванов</p> 
+                    {% if user.is_authenticated %}
+                    <p class="account-title">Привет, {{ user.username }}!</p>
+                    {% else %}
+                    <a href="{% url 'login' %}">Войти</a>
+                    {% endif %}
                     <img class="account-avatar" src="{% static "images/avatar.png"%}"/>
                 </div>
             </div>
@@ -45,8 +53,9 @@
         <div class="bg-white offset">
             <div class="container">
                <h1>Навигатор</h1>
-               <div class="navigator-container">
-                    <img src="{% static "images/navigator.png"%}" />    
+                <div class="navigator-container">
+                    <div style="position:relative;overflow:hidden;">
+                     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2f19a8b388d57bef17953486c56d26ccaf3e58241011edceabf3bd076ce5fe6d&amp;source=constructor" width="916" height="575" frameborder="0"></iframe></div>
                </div>
             </div>
         </div>
@@ -66,7 +75,9 @@
                 <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
                 <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
                 <a href="{%url 'navigator'%}"  class="footer-nav-item">Навигатор</a>
-                <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
+                {% if user.is_authenticated %}
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
+                    {% endif %}
             </div>
             <div class="footer-text">
                 Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 

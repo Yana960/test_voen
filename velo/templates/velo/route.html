@@ -17,12 +17,12 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="./images/logo.svg" class="logo-img" />
+                     <img src="{% static "images/logo.svg"%}" class="logo-img" />
                 </a>
                 <div class="partners">
-                    <img src="./images/es.png" />
-                    <img src="./images/rb.png" />
-                    <img src="./images/undp.png" />
+                    <img src="{% static "images/es.png"%}"  />
+                    <img src="{% static "images/rb.png"%}"  />
+                    <img src="{% static "images/undp.png"%}"  />
                 </div>
             </div>
             <div class="flex-between">
@@ -32,11 +32,17 @@
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
                     <a href="{% url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="{%url 'navigator'%}"  class="nav-item">Навигатор</a>
+                    {% if user.is_authenticated %}
                     <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
+                    {% endif %}
                 </div>
                 <div class="account flex-between">
-                    <p class="account-title">Иван Иванов</p> 
-                    <img class="account-avatar" src="./images/avatar.png" />
+                    {% if user.is_authenticated %}
+                    <p class="account-title">Привет, {{ user.username }}!</p>
+                    {% else %}
+                    <a href="{% url 'login' %}">Войти</a>
+                    {% endif %}
+                    <img class="account-avatar" src="{% static "images/avatar.png"%}"/>
                 </div>
             </div>
         </div>
@@ -54,49 +60,53 @@
                         <i class="filter"></i>
                         <i class="search"></i>
                     </div>
-                </div>        
+                </div>
                 <div class="historic-routes">
-
-                    {% if marsh.id == 2%}
-                        {% for historymarsh in history_marsh %}
-                    <div class="historic-routes-item flex-between">
-                        <div class="historic-routes-item-frame">
-                            <img src="{{ historymarsh.history_marsh_image.url }}" />
-                        </div>
-                        <div class="historic-routes-item-content">
-
-                            <h3>{{ historymarsh.history_marsh_name }}</h3>
-                            <div class="clocks flex">
-                                <div class="clocks-item clocks-item-miles">{{ historymarsh.history_marsh_km }} км</div>
-                                <div class="clocks-item clocks-item-hours">{{ historymarsh.history_marsh_time }} ч</div>
-                                <div class="clocks-item clocks-item-objects">{{ historymarsh.history_marsh_obj }} объектов</div>
-                            </div>
-                            <div class="historic-routes-item-text">
-                               {{ historymarsh.history_marsh_text }}
-                            </div>
-                            <div class="historic-routes-item-buttons flex">
-                                <button class="reverse-button small-button button">Редактировать маршрут</button>
-                                <button class="main-button small-button button">Начать поездку</button>
-                            </div>
-                        </div>
-                    </div>
-                        {% endfor %}
+                            {% for itemmarsh in item_marsh %}
+                                {% if marsh.id == itemmarsh.name.id%}
+                                <div class="historic-routes-item flex-between">
+                                    <div class="historic-routes-item-frame">
+                                       <div style="position:relative;overflow:hidden;">
+                                            <a href="https://yandex.by/maps/157/minsk/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Минск</a>
+                                            <a href="{{ itemmarsh.marsh_url_1 }}"  style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс.Карты</a>
+                                            <iframe src="{{ itemmarsh.marsh_url_2 }}" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="historic-routes-item-content">
+                                        <h3>{{ itemmarsh.marsh_name }}</h3>
+                                        <div class="clocks flex">
+                                            <div class="clocks-item clocks-item-miles">{{ itemmarsh.marsh_km }} км</div>
+                                            <div class="clocks-item clocks-item-hours">{{ itemmarsh.marsh_time }} ч</div>
+                                            <div class="clocks-item clocks-item-objects">{{ itemmarsh.marsh_obj }} объектов</div>
+                                        </div>
+                                        <div class="historic-routes-item-text">
+                                           {{ itemmarsh.marsh_text }}
+                                        </div>
+                                        <div class="historic-routes-item-buttons flex">
+                                            <button class="reverse-button small-button button">Редактировать маршрут</button>
+                                            <a href="{% url 'add_cart' itemmarsh.id %}" class="main-button small-button button">Начать поездку</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {%endif%}
+                            {% endfor %}
 
                 </div>
+
                 <div class="pagination">
                             <span class="step-links">
-                                {% if history_marsh.has_previous %}
-                                    <a href="?page={{ history_marsh.previous_page_number }}"><</a>
+                                {% if item_marsh.has_previous %}
+                                    <a href="?page={{ item_marsh.previous_page_number }}"><</a>
                                 {% endif %}
                                 <span class="current">
-                                    Страница {{ history_marsh.number }} из {{ history_marsh.paginator.num_pages }}
+                                    Страница {{ item_marsh.number }} из {{ item_marsh.paginator.num_pages }}
                                 </span>
-                                {% if history_marsh.has_next %}
-                                     <a href="?page={{ history_marsh.next_page_number }}">></a>
+                                {% if item_marsh.has_next %}
+                                     <a href="?page={{ item_marsh.next_page_number }}">></a>
                                 {% endif %}
                             </span>
                         </div>
-                {% endif %}
+
             </div>
         </div>
     </section>
@@ -115,14 +125,16 @@
                 <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
                 <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
                 <a href="{%url 'navigator'%}" class="footer-nav-item">Навигатор</a>
-                <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
+                 {% if user.is_authenticated %}
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
+                    {% endif %}
                 <a href="{%url 'registration'%}" class="footer-nav-item">Регистрация</a>
             </div>
             <div class="footer-text">
-                Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 
-                в рамках проекта «Поддержка экономического развития на местном уровне 
+                Сайт разработан в рамках реализации инициативы «Быхов-инновационный»,
+                в рамках проекта «Поддержка экономического развития на местном уровне
                 в Республике Беларусь», который финансируется Европейским союзом (ЕС)
-                 и реализуется Программой развития ООН (ПРООН) в партнерстве 
+                 и реализуется Программой развития ООН (ПРООН) в партнерстве
                  с Министерством экономики Республики Беларусь
             </div>
             <div class="footer-logo">
@@ -131,7 +143,7 @@
                         <p class="logo-top">Быхов</p>
                         <p class="logo-bottom">Велосипедный</p>
                     </div>
-                    <img src="./images/logo.svg" class="logo-img" />
+                     <img src="{% static "images/logo.svg"%}" class="logo-img" />
                 </a>
                 <div class="copy">&copy; 2020 Быхов Велосипедный</div>
             </div>

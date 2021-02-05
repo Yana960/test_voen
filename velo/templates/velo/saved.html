@@ -32,10 +32,16 @@
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
                     <a href="{%url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="{%url 'navigator'%}" class="nav-item">Навигатор</a>
-                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>                
+                     {% if user.is_authenticated %}
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
+                    {% endif %}
                 </div>
                 <div class="account flex-between">
-                    <p class="account-title">Иван Иванов</p> 
+                    {% if user.is_authenticated %}
+                    <p class="account-title">Привет, {{ user.username }}!</p>
+                    {% else %}
+                    <a href="{% url 'login' %}">Войти</a>
+                    {% endif %}
                     <img class="account-avatar" src="{% static "images/avatar.png"%}"/>
                 </div>
             </div>
@@ -47,8 +53,10 @@
                 <div class="flex-between">
                     <h1>Личный кабинет</h1>
                     <div class="routes-settings flex-between">
+                        {% if user.is_authenticated %}
                         <button class="button main-button big-button new-route-btn">Новый маршрут</button>
-                        <button class="button reverse-button big-button logout-btn">Выйти</button>
+                        <a href="{% url 'logout' %}" class="button reverse-button big-button logout-btn">Выйти</a>
+                        {% endif %}
                     </div>
                 </div>        
                 <div class="historic-routes">
@@ -63,48 +71,25 @@
                         <div class="tab-content">
                             <div id="saved-routes" class="b-tab active">
                                 <div class="historic-routes-item flex-between">
-                                    <div class="historic-routes-item-frame">
-                                        <img src="{% static "images/frame.png"%}" />
-                                    </div>
-                                    <div class="historic-routes-item-content">
-                                        <i class="close-route-icon"></i>
-                                        <h3>Название исторического маршрута 1 <i class="edit-content"></i></h3>
-                                        <div class="clocks flex">
-                                            <div class="clocks-item clocks-item-miles">8 км</div>
-                                            <div class="clocks-item clocks-item-hours">1.5 ч</div>
-                                            <div class="clocks-item clocks-item-objects">5 объектов</div>
-                                        </div>
-                                        <div class="historic-routes-item-text">
-                                            1. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                            2. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                            3. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                            4. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                            5. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                        </div>
-                                        <div class="historic-routes-item-buttons flex">
-                                            <button class="reverse-button small-button button">Редактировать маршрут</button>
-                                            <button class="main-button small-button button">Начать поездку</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                     {% for itemmarsh in item_marsh %}
+                                {% if marsh.id == itemmarsh.name.id%}
                                 <div class="historic-routes-item flex-between">
                                     <div class="historic-routes-item-frame">
-                                        <img src="{% static "images/frame.png"%}" />
+                                       <div style="position:relative;overflow:hidden;">
+                                            <a href="https://yandex.by/maps/157/minsk/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Минск</a>
+                                            <a href="{{ itemmarsh.marsh_url_1 }}"  style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс.Карты</a>
+                                            <iframe src="{{ itemmarsh.marsh_url_2 }}" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+                                        </div>
                                     </div>
                                     <div class="historic-routes-item-content">
-                                        <i class="close-route-icon"></i>
-                                        <h3>Название исторического маршрута 1 <i class="edit-content"></i></h3>
+                                        <h3>{{ itemmarsh.marsh_name }}</h3>
                                         <div class="clocks flex">
-                                            <div class="clocks-item clocks-item-miles">8 км</div>
-                                            <div class="clocks-item clocks-item-hours">1.5 ч</div>
-                                            <div class="clocks-item clocks-item-objects">5 объектов</div>
+                                            <div class="clocks-item clocks-item-miles">{{ itemmarsh.marsh_km }} км</div>
+                                            <div class="clocks-item clocks-item-hours">{{ itemmarsh.marsh_time }} ч</div>
+                                            <div class="clocks-item clocks-item-objects">{{ itemmarsh.marsh_obj }} объектов</div>
                                         </div>
                                         <div class="historic-routes-item-text">
-                                            1. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                            2. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                            3. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                            4. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
-                                            5. Замок Сапеги (1590-1619г.) памятник архитектуры.<br>
+                                           {{ itemmarsh.marsh_text }}
                                         </div>
                                         <div class="historic-routes-item-buttons flex">
                                             <button class="reverse-button small-button button">Редактировать маршрут</button>
@@ -112,7 +97,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                {%endif%}
+                            {% endfor %}
+                                </div>
+
                             <div id="my-routes" class="b-tab">
                                 <div class="my-routes">                         
                                     <div class="my-routes-item">
@@ -192,10 +180,7 @@
                                         <input class="login-form-input input" type="text" placeholder="Введите новый пароль">
                                     </div>
                                     <button class="button main-button big-button width100">Сохранить изменения</button>
-
                                 </div>
-                               
-                                
                             </div>
                         </div>
                     </div>
@@ -219,7 +204,9 @@
                 <a href="{%url 'about'%}"  class="footer-nav-item">О нас</a>
                 <a href="{%url 'objects'%}"class="footer-nav-item">Объекты</a>
                 <a href="{%url 'navigator'%}"  class="footer-nav-item">Навигатор</a>
-                <a href="{%url 'saved'%}" class="footer-nav-item">Кабинет</a>
+                 {% if user.is_authenticated %}
+                    <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
+                    {% endif %}
             </div>
             <div class="footer-text">
                 Сайт разработан в рамках реализации инициативы «Быхов-инновационный», 

@@ -33,10 +33,16 @@
                     <a href="{%url 'about'%}" class="nav-item">О нас</a>
                     <a href="{% url 'objects'%}" class="nav-item">Объекты</a>
                     <a href="{%url 'navigator'%}"  class="nav-item">Навигатор</a>
+                    {% if user.is_authenticated %}
                     <a href="{%url 'saved'%}" class="nav-item">Кабинет</a>
+                    {% endif %}
                 </div>
                 <div class="account flex-between">
-                    <p class="account-title">Иван Иванов</p>
+                    {% if user.is_authenticated %}
+                    <p class="account-title">Привет, {{ user.username }}!</p>
+                    {% else %}
+                    <a href="{% url 'login' %}">Войти</a>
+                    {% endif %}
                     <img class="account-avatar" src="{% static "images/avatar.png"%}"/>
                 </div>
             </div>
